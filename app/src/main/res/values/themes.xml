@@ -1,6 +1,0 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Base.Theme.Percobaan1" parent="Theme.AppCompat.Light.NoActionBar">
-    </style>
-
-    <style name="Theme.Percobaan1" parent="Base.Theme.Percobaan1" />
-</resources>
