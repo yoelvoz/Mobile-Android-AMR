@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- ================= MAP ================= -->
+    <org.osmdroid.views.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0F1D4A"/>
+
+    <!-- ================= CURSOR TENGAH (GOJEK STYLE) ================= -->
+    <ImageView
+        android:id="@+id/centerCursor"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:src="@android:drawable/ic_menu_mylocation"
+        android:tint="#00C853"
+        android:elevation="8dp" />
+
+    <!-- ================= TITLE ================= -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Robot Live Tracking"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="14dp"
+        android:padding="10dp"
+        android:background="@drawable/bg_card"
+        android:alpha="0.7"
+        android:elevation="5dp" />
+
+    <!-- ================= INFO KIRI ================= -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="top|start"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="12dp">
+
+        <TextView
+            android:id="@+id/tvSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🤖 -- m/s"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/bg_card"
+            android:padding="8dp"
+            android:elevation="6dp"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tvEtaKalman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⏱️ ETA: -- s"
+            android:textSize="12sp"
+            android:textColor="#00E5FF"
+            android:background="@drawable/bg_card"
+            android:padding="8dp"
+            android:elevation="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="4dp"/>
+        <TextView
+            android:id="@+id/tvEtaGps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⏱ GPS: -- s"
+            android:textSize="12sp"
+            android:textColor="#FFA726"
+            android:background="@drawable/bg_card"
+            android:padding="8dp"
+            android:elevation="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mode : Standby"
+            android:textColor="#9CFF2E"
+            android:background="@drawable/bg_card"
+            android:padding="7dp"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="3dp"
+            android:layout_marginBottom="4dp"/>
+
+
+    </LinearLayout>
+
+    <!-- ================= INFO KANAN ================= -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="12dp">
+
+        <TextView
+            android:id="@+id/tvRemaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📍 -- m"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/bg_card"
+            android:padding="8dp"
+            android:elevation="6dp"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tvWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⚖ -- kg"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/bg_card"
+            android:padding="8dp"
+            android:elevation="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="4dp"/>
+        <TextView
+            android:id="@+id/tvWpType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WP: -"
+            android:textSize="12sp"
+            android:textColor="#FFD740"
+            android:background="@drawable/bg_card"
+            android:padding="8dp"
+            android:elevation="6dp"
+            android:layout_marginTop="6dp"/>
+    </LinearLayout>
+
+    <!-- ================= CENTER BUTTON ================= -->
+    <ImageButton
+        android:id="@+id/btnCenterRobot"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="end|center_vertical"
+        android:layout_margin="14dp"
+        android:background="@drawable/bg_button"
+        android:src="@android:drawable/ic_menu_mylocation"
+        android:tint="#FFFFFF"
+        android:elevation="6dp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tap map to add waypoint"
+        android:textSize="11sp"
+        android:textColor="#AAAAAA"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="80dp"/>
+
+    <!-- ================= PANEL BAWAH ================= -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="10dp"
+        app:cardBackgroundColor="#1C2A66">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/tvDestination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lat: - , Lon: -"
+                android:textSize="13sp"
+                android:textColor="#FFFFFF"/>
+            <!-- ====== BARU: Tombol Pickup & Tujuan ====== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/btnSetPickup"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="📦 Set Pickup"
+                    android:textSize="11sp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/bg_button_green"
+                    android:layout_marginEnd="4dp"
+                    app:backgroundTint="@null"/>
+
+                <Button
+                    android:id="@+id/btnSetDestination"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="📍 Set Destination"
+                    android:textSize="11sp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/bg_button"
+                    android:layout_marginStart="4dp"
+                    app:backgroundTint="@null"/>
+
+            </LinearLayout>
+
+            <!-- ====== BARU: Info Pickup ====== -->
+            <TextView
+                android:id="@+id/tvPickupInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📦 Pickup : -"
+                android:textSize="10sp"
+                android:textColor="#00D97E"
+                android:background="#33007A30"
+                android:padding="6dp"
+                android:layout_marginTop="5dp"/>
+
+            <!-- ====== BARU: Info Tujuan ====== -->
+            <TextView
+                android:id="@+id/tvDestInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📍Destination : -"
+                android:textSize="10sp"
+                android:textColor="#4A9EFF"
+                android:background="#33001F5C"
+                android:padding="6dp"
+                android:layout_marginTop="3dp"/>
+
+            <!-- ====== SPEED CONTROL ====== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="#22FFFFFF"
+                android:padding="10dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⚡"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="8dp"/>
+
+                <SeekBar
+                    android:id="@+id/seekSpeed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="24"
+                    android:progress="12"
+                    android:thumbTint="#9CFF2E"
+                    android:progressTint="#9CFF2E"/>
+
+                <TextView
+                    android:id="@+id/tvSpeedVal"
+                    android:layout_width="56dp"
+                    android:layout_height="wrap_content"
+                    android:text="0.90 m/s"
+                    android:textColor="#9CFF2E"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:gravity="end"
+                    android:layout_marginStart="8dp"/>
+
+            </LinearLayout>
+
+
+            <!-- ROW 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/btnAddWaypoint"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:text="ADD POINT"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/bg_button"
+                    android:layout_marginEnd="4dp"
+                    app:backgroundTint="@null"/>
+
+                <Button
+                    android:id="@+id/btnStart"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:text="START"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/bg_button_green"
+                    android:layout_marginStart="4dp"
+                    app:backgroundTint="@null"/>
+            </LinearLayout>
+
+            <!-- ROW 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="6dp">
+
+                <Button
+                    android:id="@+id/btnReset"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:text="RESET"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/bg_button_red"
+                    android:layout_marginEnd="4dp"
+                    app:backgroundTint="@null"/>
+
+                <Button
+                    android:id="@+id/btnBack"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_button"
+                    android:text="BACK"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>
