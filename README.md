@@ -9,7 +9,7 @@ Project ini merupakan sistem kontrol mobile robot yang terdiri dari:
 - **ESP32** — modul komunikasi/sensor pada robot
 - **Arduino Mega** — pengendali utama pergerakan robot
 
-## 🎥 Demo
+## 🎥 Implementasi Hardware AMR
 
 https://github.com/user-attachments/assets/9d3f0f4b-db73-4f1d-b345-94d996787842
 
